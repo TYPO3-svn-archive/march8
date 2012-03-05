@@ -1,0 +1,96 @@
+
+
+page.jsInline {
+	8430 = TEXT
+	8430.data = register: kwicksModule_javascript
+	8430.wrap = jQuery(document).ready(function(){ | });
+	8430.required = 1
+}
+
+kwicksMod >
+kwicksMod = COA
+kwicksMod {
+	stdWrap.dataWrap = <div id="kwicksModule_uid_{register: tx_templavoila_pi1.parentRec.uid}" class="kwicksModule"> | </div>
+	stdWrap.required = 1
+
+	10 = LOAD_REGISTER
+	10 {
+		kwicksModule_id = kwicksModule_uid_{register: tx_templavoila_pi1.parentRec.uid}
+		kwicksModule_id.insertData = 1
+	
+		kwicksModule_max.field = field_max
+		kwicksModule_min.field = field_min
+		kwicksModule_isVertical.field = field_isVertical
+		kwicksModule_sticky.field = field_sticky
+		kwicksModule_defaultKwick.field = field_defaultKwick
+		kwicksModule_event.field = field_event
+		kwicksModule_duration.field = field_duration
+		kwicksModule_easing.field = field_easing
+		kwicksModule_spacing.field = field_spacing
+		# Save JavaScript to append multiple settings.
+		kwicksModule_javascript_temp.data = register: kwicksModule_javascript
+		kwicksModule_javascript.cObject = COA
+		kwicksModule_javascript.cObject {
+			10 = TEXT
+			10.data = register: kwicksModule_javascript_temp
+
+			20 = COA
+			20 {
+
+				20 = COA
+				20 {
+					stdWrap.outerWrap.cObject = COA
+					stdWrap.outerWrap.cObject {
+						10 = TEXT
+						10.data = register: kwicksModule_id
+						10.wrap = jQuery('# | ').kwicks({ | })
+					}
+
+					10 = TEXT
+					10.if.isTrue.data = register: kwicksModule_collapsible
+					10.value = collapsible: true,
+
+
+					30 = TEXT
+					30.if.value = click
+					30.if.equals.data = register: kwicksModule_event
+					30.if.negate = 1
+					30.data = register: kwicksModule_event
+					30.wrap = event: ' | ',
+
+					40 = TEXT
+					40.if.isTrue.data = register: kwicksModule_cookie
+					40.value = cookie: { expires: 30 },
+
+					50 = TEXT
+					50.if.isTrue.data = register: kwicksModule_selected
+					50.value = selected: {register: kwicksModule_selected},
+					50.insertData = 1
+
+					# Set this option to be the last option with no comma.
+					60 = TEXT
+					60.value = 'null': null
+				}
+			}
+		}
+	}
+
+
+
+	30 = RECORDS
+	30 {
+		stdWrap.wrap = <ul> | </ul>
+		stdWrap.required = 1
+		source.current = 1
+		tables = tt_content
+
+		conf.tt_content = COA
+		conf.tt_content {
+
+			outerWrap = <li> | </li>
+			20 < tt_content
+
+	}
+
+}
+}

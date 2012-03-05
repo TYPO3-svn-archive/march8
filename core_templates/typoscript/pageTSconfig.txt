@@ -1,0 +1,238 @@
+#Selección por defecto de usuarios de EXTBASE
+TCAdefaults.fe_users.tx_extbase_type = Tx_Extbase_Domain_Model_FrontendUser
+TCAdefaults.fe_groups.tx_extbase_type = Tx_Extbase_Domain_Model_FrontendUserGroup
+
+#Aquí borro todos los frames por defecto excepto el default
+TCEFORM.tt_content.section_frame.removeItems = 1,5,6,10,11,12,20,21,66
+
+
+#Aquí añado el nombre de los nuevos frames
+TCEFORM.tt_content.section_frame {
+  addItems.100 = CSC-Default
+  addItems.110 = Columnas
+  addItems.120 = Especial
+}
+
+TCEFORM.pages { 
+	layout.altLabels.3 = Interior
+	layout.altLabels.2 = Sección 
+	layout.altLabels.1 = Home 
+	layout.altLabels.0 = Por Defecto (Árbol Inteligente)
+}
+
+TCEFORM.tt_content{
+	#renderiza el control layout en un contenido. Nunca lo he usado
+	#layout.disabled = 1
+	#renderizan los márgenes antes y depués de un elemento. Nunca lo he usado, considero que las css deben hacerlo todo.
+	spaceBefore.disabled = 1
+	spaceAfter.disabled = 1
+	#Renderiza un vínculo al inicio de la página. Nunca lo he usado, aunque podría ser útil en algún momento.
+	linkToTop.disabled = 1
+	#Renderiza un borde a la imagen. Nunca lo he usado, considero que la css debe determinar esto.
+	imageborder.disabled = 1
+	#Renderiza el campo Long Desc de una imagen, obsoleto en HTML5
+	longdescURL.disabled = 1
+	#Renderiza la compresión de la imagen, entiendo que la configuración general debería hacer que esto no fuera neceseario. 
+	#Activar si es preciso ya que tengo dudas con el ¡No Cambiar!
+	image_compression.disabled = 1
+	#Determina la alineación de un caption de imagen. Nunca lo he usado, considero que debe hacerse por CSS. 
+	imagecaption_position.disabled = 1
+	#Determina la alineación de un Header. Considero que esto debe hacerse por CSS, forma parte del diseño.
+	header_position.disabled = 1
+	#Añade fecha a un bloque. No lo he usado nunca. 
+	#Considero que si algo debe ir fechado, debe formar parte de alguna extensión de noticias, blog, etc
+	#Los bloques generales deben usarse con contenido Estático, coorporativo normal. Demasiadas explicaciones. Podría ser útil.
+	date.disabled = 1
+	#Añade un icono que permite deshabilitar el RTE. No tiene sentido
+	rte_enabled.disabled = 1
+	#No usamos columnas porque trabajamos con TemplaVoila!
+	colPos.disabled = 1
+	#No lo he usado en la vida, no entiendo. 
+	#Se utiliza con el elemento de crear menús. Elemento que tampoco he usado.
+	#Podría ser útil en una página larguísima, pues haría referencia a cada uno de los CE insertados. 
+	#Evidentemente deberían ir con CSC, supongo (estoy seguro) que si no no podría funcionar. 
+	sectionIndex.disabled = 1
+}
+
+
+#TCEFORM.tt_content.titleText.disabled = 1
+#TCEFORM.tt_content.altText.disabled = 1
+#TCEFORM.tt_content.image_effects.disabled = 1
+TCEFORM.tt_content.layout.label = Elementos adicionales
+TCEFORM.tt_content.section_frame.label = Estilo del bloque
+TCEFORM.tt_content.subheader.label = Subencabezado
+TCEFORM.tt_content.fe_group.label = Restringir visibilidad del elemento
+TCEFORM.tt_content.hidden.label = ¿Desactivar elemento?
+TCEFORM.tt_content.starttime.label = Elemento visible desde
+TCEFORM.tt_content.endtime.label = Elemento visible hasta
+
+TCEFORM.pages{
+	#No se usa, usamos módulo de noticias.
+	author.disabled = 1
+	author_email.disabled = 1
+	lastUpdated.disabled = 1
+	newUntil.disabled  = 1
+	#Replace Content... ¿qué uso se le puede dar?
+	content_from_pid.disabled = 1
+	#Protocolo http o https... no lo he usado en la vida
+	url_scheme.disabled = 1
+	#Alias de una página: Sustituye el numero de ID por un nombre. Usamos REAL_URL por lo que la dirección es la que proporciona Real URL
+	alias.disabled = 1
+	#Target de una página. Serviría en enlaces de menú.
+	#Podría tener algo de sentido aunque en principio no lo he usado nunca.
+	target.disabled = 1	
+}
+
+
+TCEFORM.tt_content { 
+	
+	layout.altLabels.2 = Social Shares ( Facebook, twitter, etc ) 
+	layout.altLabels.1 = Leer más
+	layout.altLabels.0 = Por defecto ( Vacío ) 
+}
+
+
+
+
+
+
+
+
+mod.web_list.newPageWiz.overrideWithExtension >
+
+####################################################
+# Templavoila
+mod.web_txtemplavoilaM1 {
+  # add trash bin to tv page module
+  enableDeleteIconForLocalElements = 1
+  # add edit icon also if record is only referenced
+  enableEditIconForRefElements = 1
+  # show tv pagemodule für verweise
+  additionalDoktypesRenderToEditView = 4
+  # new page wizard fields
+  createPageWizard.fieldNames = hidden, title, description, abstract, nav_title, nav_hide, fe_group
+}
+
+
+
+templavoila.wizards.newContentElement.renderMode = tabs
+tmp.wizards < templavoila.wizards.newContentElement.wizardItems
+templavoila.wizards.newContentElement.wizardItems >
+ 
+templavoila.wizards.newContentElement.wizardItems {
+    common < tmp.wizards.common
+    common.elements {
+		media < tmp.wizards.special.elements.media
+		uploads < tmp.wizards.special.elements.uploads
+		menu < tmp.wizards.special.elements.menu
+		div < tmp.wizards.special.elements.div
+		header {
+			icon = gfx/c_wiz/regular_text.gif
+			title = Header
+			description = Adds a header element only
+			tt_content_defValues {
+				CType = header
+			}
+		}		
+    }
+    common.show := addToList(div,media,header,html,menu,uploads,media)
+	common.show := removeFromList(bullets)
+    fce < tmp.wizards.fce
+
+	fce {
+		header = Structural elements ( Columns )
+		show = fce_22,fce_23,fce_24,fce_25,fce_26,fce_27,fce_28,fce_29,fce_30,fce_31,fce_32
+	}
+
+	fce1 {
+		header = Structural elements ( Special )
+		elements{
+	
+			fce_2 {
+				icon = ../typo3conf/ext/march8/resources/especiales/tabs.png
+				title = Pestañas
+				description = Muestra el contenido en formato de pestañas
+				tt_content_defValues {
+					CType = templavoila_pi1
+					tx_templavoila_to = 2
+				}
+			}
+			fce_3 {
+				icon = ../typo3conf/ext/march8/resources/especiales/accordion.png
+				title = Acordeón
+				description = Muestra el contenido en formato de acordeón
+				tt_content_defValues {
+					CType = templavoila_pi1
+					tx_templavoila_to = 3
+				}
+			}
+			fce_16 {
+				icon = ../typo3conf/ext/march8/resources/especiales/slider.png
+				title = Slider
+				description = Slider de elementos. Permite deslizar imágenes, textos, videos, etc
+				tt_content_defValues {
+					CType = templavoila_pi1
+					tx_templavoila_to = 16
+				}
+			}
+			fce_17 {
+				icon = ../typo3conf/ext/march8/resources/especiales/kwicks.png
+				title = Kwicks
+				description = Elemento tipo Kwicks, acordeón vertical especial
+				tt_content_defValues {
+					CType = templavoila_pi1
+					tx_templavoila_to = 17
+				}
+			}
+			fce_1 {
+				icon = ../typo3conf/ext/march8/resources/especiales/wrapper.png
+				title = Envoltorio
+				description = Permite añadir HTML antes y después de un elemento
+				tt_content_defValues {
+					CType = templavoila_pi1
+					tx_templavoila_to = 1
+				}
+			}										
+		}
+		show = fce_2,fce_3,fce_16,fce_17,fce_1 
+	}	
+	
+	plugins < tmp.wizards.plugins
+	plugins.elements{
+			html < tmp.wizards.special.elements.html
+			mailform < tmp.wizards.forms.elements.mailform
+			search < tmp.wizards.forms.elements.search
+			login < tmp.wizards.forms.elements.login
+	}
+	plugins.show = *
+    plugins.header = Advanced elements	
+		  
+}
+
+
+
+
+
+admPanel.enable.all = 1
+options {
+  pageTree.showPageIdWithTitle = 1
+  disableHelpModule = 1
+     clearCache.all   = 1
+   clearCache.pages = 1
+  
+}
+
+
+mod.web_list.hideTables = static_countries,static_country_zones,static_currencies,static_territories,static_languages
+
+setup.override.titleLen = 64
+setup.override.navFrameResizable = 1
+setup.override.navFrameWidth = 250
+
+
+
+
+mod.SHARED {
+defaultLanguageFlag = es
+defaultLanguageLabel = Español
+}

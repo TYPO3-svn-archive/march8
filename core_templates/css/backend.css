@@ -1,0 +1,262 @@
+.nobr {
+	white-space:normal;
+	}
+.tpm-container-element {
+	width:100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.fceTypeHeader {
+	color:white;
+	margin:0;
+	text-align:center;
+	font-size:14px;
+	background-color: #5B5B5B;
+background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0.1, #7F7F7F), to(#5B5B5B));
+background-repeat: repeat-x;
+	}
+
+.tvColumnWrap {
+	 background-color: #eaeaea;
+	 margin:0;
+	 paddng:0;
+	}
+
+#tvContentOuterWrap {
+	position:relative;
+	margin: 10px;
+	}
+
+
+.tvContentTab {
+	position: relative;
+	z-index: 1100;
+	float: left;
+	background-color: #cccccc;
+	padding: 4px 0 2px;
+	width: 125px;
+	margin: 0 5px;
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 11px;
+	color: #797d80;
+	text-align: center;
+	cursor: pointer;
+	}
+
+#tvTabBase {
+	height: 10px;
+	background-color: #5B5B5B;
+	clear: both;
+	}
+
+.tvContent {
+	background-color: #f2f2f2;
+	padding: 0px;
+	border: 3px solid #5B5B5B;
+	clear: both;
+	}
+
+.tpm-preview {
+	height: 45px;
+	overflow: hidden;
+	}
+
+.sortable_handle {
+	cursor: move;
+	}
+
+.tvContentTab.tvfwActiveTab {
+	color: white;
+	cursor: auto;
+	background-color: #5B5B5B;
+background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0.1, #7F7F7F), to(#5B5B5B));
+background-repeat: repeat-x;
+	}
+
+.t3-page-ce.inactive .t3-row-header {
+	visibility:visible;
+	background-color:#cccccc;
+}
+
+.t3-page-ce.inactive .t3-row-header .tpm-element-control {
+	visibility:hidden;
+}
+
+.t3-page-ce.active .t3-row-header {
+	visibility:visible;
+}
+
+.t3-page-ce .t3-page-ce.active .t3-row-header .tpm-element-control {
+	visibility:visible;
+}
+
+.t3-row-header .tpm-element-control {
+	float: right;
+}
+
+.t3-page-ce.active .t3-page-ce.inactive .t3-row-header,
+.t3-row-header {
+	background: none;
+	background-color: transparent;
+	color:#5B5B5B;
+	font-weight: bold;
+	font-size: 12px;
+	}
+
+.tpm-titlebar-page .t3-row-header {
+	color:white;
+	}
+
+.t3-page-ce.active .t3-row-header,
+.tpm-titlebar-page {
+	background-color: #5B5B5B;
+background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0.1, #7F7F7F), to(#5B5B5B));
+background-repeat: repeat-x;
+color: white;
+font-weight: bold;
+	}
+
+.tpm-warnings {
+	margin: 5px 0;
+	padding: 3px 5px;
+	border: 1px solid #8aafc4;
+	background-color: #DDEEF9;
+	}
+
+.tpm-warnings .t3-icon {
+	display: none;
+	}
+
+.tpm-sub-elements {
+	border: 1px solid #cacaca;
+	border-top: none;
+	padding: 5px;
+	}
+
+.tpm-sub-elements .tpm-sub-elements {
+	background-color: white;
+	}
+
+.typo3-templavoila-pagemodule > #typo3-docbody > #typo3-docheader-row2 {
+	height: auto;
+	}
+
+.tpm-content-cell {
+	border: none;
+	}
+
+
+
+/* added because we replace not just add to TV stylesheet */
+
+.tpm-titlebar {
+	overflow: hidden;
+	}
+	
+
+.typo3-templavoila-pagemodule > #typo3-docbody {
+	top: 22px;
+	}
+
+.tpm-element-title {
+	margin-right: 0;
+	}
+
+.tpm-element-title .tpm-langIcon {
+	float: left;
+	padding-right: 5px;
+	padding-top: 2px;
+	}
+	
+	
+	
+	
+.field_espacio{
+ border-bottom: 2px solid #5B5B5B;
+ 
+ min-height:50px;
+
+}
+
+.titulo{
+font-size: 14px;
+font-weight: bold;
+padding: 15px 5px 15px 5px;
+display: block;
+	background: #EAEAEA;
+
+}
+/*
+.tpm-bottom-controls{
+display:block;
+text-align:right;
+
+}*/
+
+
+.miniatura{
+	height:60px;
+	width:45px;
+	
+	display:block;
+position:absolute;
+z-index:10000;
+right:0px;
+top:-10px;
+border:3px solid #5B5B5B;
+	
+}
+#c1_main_c2{
+	background:url(../../resources/layouts/min/c1_main_c2.png) top center no-repeat transparent;
+}
+#c2_main_c1{
+	background:url(../../resources/layouts/min/c2_main_c1.png) top center no-repeat transparent;
+}
+#c1_main{
+	background:url(../../resources/layouts/min/c1_main.png) top center no-repeat transparent;
+}
+#c2_main{
+	background:url(../../resources/layouts/min/c2_main.png) top center no-repeat transparent;
+}
+#main_c2{
+	background:url(../../resources/layouts/min/main_c2.png) top center no-repeat transparent;
+}
+#main_c1{
+	background:url(../../resources/layouts/min/main_c1.png) top center no-repeat transparent;
+}
+#c1_c2_main{
+	background:url(../../resources/layouts/min/c1_c2_main.png) top center no-repeat transparent;
+}
+#c2_c1_main{
+	background:url(../../resources/layouts/min/c2_c1_main.png) top center no-repeat transparent;
+}
+#main_c2_c1{
+	background:url(../../resources/layouts/min/main_c2_c1.png) top center no-repeat transparent;
+}
+#main_c1_c2{
+	background:url(../../resources/layouts/min/main_c1_c2.png) top center no-repeat transparent;
+}
+
+#main{
+	background:url(../../resources/layouts/min/main.png) top center no-repeat transparent;
+}
+
+.tabla > table{
+width:100%;
+}
+
+.tabla > table > thead > tr > th, .tabla > table > tfoot > tr > th,.tabla > table > tbody > tr > td{
+border:2px solid 		#585858;
+}
+
+
+.clear{
+clear:both;
+}
+
+div.typo3-dyntabmenu-divs {
+
+width: 100%;
+}

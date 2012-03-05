@@ -1,0 +1,92 @@
+##############################################################
+# containerWidth is the library used to supply the main container
+# widths to the data structures. The actual values are supplied
+# by constants whose values are set within each skin
+##############################################################
+
+containerWidth {
+	core{
+		outerTop = {$containerWidth.core.outerTop}
+		outerBottom = {$containerWidth.core.outerBottom}
+		topNav = {$containerWidth.core.topNav}
+		header = {$containerWidth.core.header}
+		mainMenu = {$containerWidth.core.mainMenu}
+		topFeature = {$containerWidth.core.topFeature}
+		topBreadcrumb = {$containerWidth.core.topBreadcrumb}
+		column1 = {$containerWidth.core.column1}
+		mainHeader = {$containerWidth.core.mainHeader}
+		mainContent = {$containerWidth.core.mainContent}
+		mainFooter = {$containerWidth.core.mainFooter}
+		column2 = {$containerWidth.core.column2}
+		bottomBreadcrumb = {$containerWidth.core.bottomBreadcrumb}
+		bottomFeature = {$containerWidth.core.bottomFeature}
+		bottomMenu = {$containerWidth.core.bottomMenu}
+		footer = {$containerWidth.core.footer}
+		bottomNav = {$containerWidth.core.bottomNav}
+	}	
+	
+	2areas{
+		outerTop = {$containerWidth.core.outerTop}
+		outerBottom = {$containerWidth.core.outerBottom}
+		topNav = {$containerWidth.core.topNav}
+		header = {$containerWidth.core.header}
+		mainMenu = {$containerWidth.core.mainMenu}
+		topFeature = {$containerWidth.core.topFeature}
+		topBreadcrumb = {$containerWidth.core.topBreadcrumb}
+		column1 = {$containerWidth.2areas.column1}
+		mainHeader = {$containerWidth.2areas.mainHeader}
+		mainContent = {$containerWidth.2areas.mainContent}
+		mainFooter = {$containerWidth.2areas.mainFooter}
+		column2 = {$containerWidth.2areas.column2}
+		bottomBreadcrumb = {$containerWidth.core.bottomBreadcrumb}
+		bottomFeature = {$containerWidth.core.bottomFeature}
+		bottomMenu = {$containerWidth.core.bottomMenu}
+		footer = {$containerWidth.core.footer}
+		bottomNav = {$containerWidth.core.bottomNav}
+	}	
+	
+	area{
+		outerTop = {$containerWidth.core.outerTop}
+		outerBottom = {$containerWidth.core.outerBottom}
+		topNav = {$containerWidth.core.topNav}
+		header = {$containerWidth.core.header}
+		mainMenu = {$containerWidth.core.mainMenu}
+		topFeature = {$containerWidth.core.topFeature}
+		topBreadcrumb = {$containerWidth.core.topBreadcrumb}
+		
+		mainHeader = {$containerWidth.area.mainHeader}
+		mainContent = {$containerWidth.area.mainContent}
+		mainFooter = {$containerWidth.area.mainFooter}
+		
+		bottomBreadcrumb = {$containerWidth.core.bottomBreadcrumb}
+		bottomFeature = {$containerWidth.core.bottomFeature}
+		bottomMenu = {$containerWidth.core.bottomMenu}
+		footer = {$containerWidth.core.footer}
+		bottomNav = {$containerWidth.core.bottomNav}
+	}	
+	
+	
+	table{
+		topFeature = {$containerWidth.table.topFeature}
+		mainContent = {$containerWidth.table.mainContent}
+		bottomFeature = {$containerWidth.table.bottomFeature}
+	}	
+	table2areas{
+		topFeature = {$containerWidth.table.topFeature}
+		bottomFeature = {$containerWidth.table.bottomFeature}
+		mainContent = {$containerWidth.table2areas.mainContent}		
+		column1 = {$containerWidth.table2areas.column1}
+	}	
+	table3areas{
+		topFeature = {$containerWidth.table.topFeature}
+		mainContent = {$containerWidth.table3areas.mainContent}
+		bottomFeature = {$containerWidth.table.bottomFeature}
+		column1 = {$containerWidth.table3areas.column1}
+		column1 = {$containerWidth.table3areas.column2}
+	}				
+
+
+	
+	
+		
+}

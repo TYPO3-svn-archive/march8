@@ -1,0 +1,58 @@
+
+[GLOBAL]
+page {
+	includeJS.file1 = {$march8.corePath}js/core.js
+	includeJS.file2 = {$march8.corePath}js/jquery.bxSlider.js
+	includeJS.file3 = {$march8.corePath}js/jquery.kwicks-1.5.1.js
+}
+# Let TemplaVoila render the page content.
+page.10 = USER
+page.10.userFunc = tx_templavoila_pi1->main_page
+
+
+
+# Temporarily disabled - See http://bugs.typo3.org/view.php?id=17890
+# page.10.renderUnmapped = false
+
+page.10.disableExplosivePreview = 1
+plugin.tx_templavoila_pi1.disableExplosivePreview = 1
+
+
+
+lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.addAttributes.P.class >
+tt_content.image.20.1.imageLinkWrap.height >
+tt_content.image.20.1.imageLinkWrap.width >
+page.config.extTarget =
+
+
+[globalVar = LIT:1 != {$jQueryUiTheme}]
+page.includeCSS {
+	march8_jquery_theme = http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/{$jQueryUiTheme}/jquery-ui.css
+	march8_jquery_theme.external = 1
+}
+[end]
+
+# If a style is set, load user style.
+page.includeCSS {
+	march8_jquery_ui_style = {$jQueryUiStyle}
+}
+
+
+plugin.tx_sassify_plugin {  
+	debugInfo = 0  
+	showExceptions = 1  
+	cache = 0
+	stylesheets {  
+	  	5 = 0030-rte.scss    
+		5.filenameWrap.wrap = {$march8.skinPath}sass/|    
+		5.media = screen    
+		5.output = {$march8.skinPath}css/rte.css
+		5.linkWrap.wrap = <!-- RTE --> |
+		10 = scss.scss    
+		10.filenameWrap.wrap = {$march8.skinPath}sass/|    
+		10.media = screen    
+		10.output = {$march8.skinPath}css/css.css
+		10.linkWrap.wrap = <!-- todo --> |  
+  		
+	}
+}

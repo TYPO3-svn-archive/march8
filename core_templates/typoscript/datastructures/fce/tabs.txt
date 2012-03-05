@@ -1,0 +1,136 @@
+page.jsInline {
+	8426 = TEXT
+	8426.data = register: tabsModule_javascript
+	8426.wrap = jQuery(document).ready(function(){ | });
+	8426.required = 1
+}
+
+tabsMod >
+tabsMod = COA
+tabsMod {
+	stdWrap.dataWrap = <div id="tabsModule_uid_{register: tx_templavoila_pi1.parentRec.uid}" class="tabsModule"{register: tabsModule_height}> | </div>
+	stdWrap.required = 1
+
+	10 = LOAD_REGISTER
+	10 {
+		tabsModule_id = tabsModule_uid_{register: tx_templavoila_pi1.parentRec.uid}
+		tabsModule_id.insertData = 1
+
+		tabsModule_height.field = field_height
+		tabsModule_height.noTrimWrap = | style="height: |px;"|
+		tabsModule_height.fieldRequired = field_height
+
+		tabsModule_selected.field = field_selected
+		tabsModule_collapsible.field = field_collapsible
+		tabsModule_effect.field = field_effect
+		tabsModule_duration.field = field_duration
+		tabsModule_event.field = field_event
+		tabsModule_cookie.field = field_cookie
+
+		# Save JavaScript to append multiple settings.
+		tabsModule_javascript_temp.data = register: tabsModule_javascript
+		tabsModule_javascript.cObject = COA
+		tabsModule_javascript.cObject {
+			10 = TEXT
+			10.data = register: tabsModule_javascript_temp
+
+			20 = COA
+			20 {
+				10 = TEXT
+				10.value (
+					// Remove URL and show only the anchor. jQuery Tabs don't like full path of RealURL.
+					jQuery('.tabsModule ul li a[href*=#c]').each(function(index, element){
+						jQuery(element).attr('href', '#' + jQuery(element).attr('href').split('#')[1]);
+					});
+				)
+
+				20 = COA
+				20 {
+					stdWrap.outerWrap.cObject = COA
+					stdWrap.outerWrap.cObject {
+						10 = TEXT
+						10.data = register: tabsModule_id
+						10.wrap = jQuery('# | ')
+
+						20 = TEXT
+						20.value = .each(function(index, element){ jQuery(element).tabs({ | }); });
+					}
+
+					10 = TEXT
+					10.if.isTrue.data = register: tabsModule_collapsible
+					10.value = collapsible: true,
+
+					20 = COA
+					20 {
+						if.isTrue.data = register: tabsModule_effect
+						wrap = fx: { | },
+
+						10 = TEXT
+						10.data = register: tabsModule_effect
+						10.wrap = | : 'toggle',
+
+						20 = TEXT
+						20.data = register: tabsModule_duration
+						20.wrap = duration: ' | '
+					}
+
+					30 = TEXT
+					30.if.value = click
+					30.if.equals.data = register: tabsModule_event
+					30.if.negate = 1
+					30.data = register: tabsModule_event
+					30.wrap = event: ' | ',
+
+					40 = TEXT
+					40.if.isTrue.data = register: tabsModule_cookie
+					40.value = cookie: { expires: 30 },
+
+					50 = TEXT
+					50.if.isTrue.data = register: tabsModule_selected
+					50.value = selected: {register: tabsModule_selected},
+					50.insertData = 1
+
+					# Set this option to be the last option with no comma.
+					60 = TEXT
+					60.value = 'null': null
+				}
+			}
+		}
+	}
+
+	20 = RECORDS
+	20 {
+		stdWrap.wrap = <ul> | </ul>
+		stdWrap.required = 1
+		source.current = 1
+		tables = tt_content
+
+		conf.tt_content = TEXT
+		conf.tt_content {
+			outerWrap = <li> | </li>
+			field = subheader // header
+			htmlSpecialChars = 1
+			typolink.parameter.dataWrap = #c{field:uid}
+			stdWrap.HTMLparser = 1
+			stdWrap.HTMLparser.keepNonMatchedTags = 1
+			stdWrap.HTMLparser.tags.a.fixAttrib.href.prefixLocalAnchors = 0
+		}
+	}
+
+	30 = RECORDS
+	30 {
+		stdWrap.wrap =  | 
+		stdWrap.required = 1
+		source.current = 1
+		tables = tt_content
+
+		conf.tt_content = COA
+		conf.tt_content {
+
+			
+			20 < tt_content
+
+	}
+
+}
+}

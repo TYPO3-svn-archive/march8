@@ -1,0 +1,698 @@
+#Estructura - Define TemplaVoila
+page = PAGE
+page.10 = USER
+page.10.userFunc = tx_templavoila_pi1->main_page
+page.10.disableExplosivePreview = 1
+page {
+	typeNum = 0
+	config {
+		# Set up XHTML Transitional output
+		xmlprologue = none
+		doctype = xhtml_trans
+
+		# Get rid of extra comments in the XHTML output.
+		disablePrefixComment = 1
+
+		# Turn off the page title since we'll manually add it later.
+		noPageTitle = 2
+
+		# Enabled indexed search indexing.
+		index_enable = 1
+  
+		# Clear the cache at midnight so that scheduled content appears on time.
+		cache_clearAtMidnight = 1
+
+		# Shorten email links using MD5 Hash.
+		notification_email_urlmode = 76
+
+		# Add the URL in front of local anchors to account for base URL.
+		prefixLocalAnchors = all
+	}
+
+	headerData {
+		# Set the new page title
+		1 = COA
+		1 {
+			wrap = <title> | </title>
+
+			1 = TEXT
+			1.data = TSFE:page|title
+			1.htmlSpecialChars = 1
+
+			# Don't repeat the same title twice.
+			2 = TEXT
+			2.noTrimWrap = | &#124; {$siteTitle} |
+			2.if {
+				value.data = TSFE:page|title
+				equals = {$siteTitle}
+				negate = 1
+			}
+		}
+
+		2 =< additionalDocHeadCode
+
+	}
+
+
+
+	includeJS.tf_skin = {$march8.skinPath}/js/js.js
+	
+	
+	
+	
+	
+}
+#Aquí elimino la renderización del CSC-Defaul
+tt_content.stdWrap.innerWrap.cObject.default >
+
+#Aquí añado la renderización de los nuevos elementos 
+tt_content.stdWrap.innerWrap.cObject{
+
+	#El elemento 100 funciona como el anterior csc-default
+	100 = COA
+	100 {
+		# defines the starting div with the content element uid (that uid is used as anchor if
+		# you link directly to a content element)
+		# no id is inserted if the content element is of type “divider”
+		10 = TEXT
+		10 {
+			value = <div id="c{field:uid}"
+			override.cObject = TEXT
+			override.cObject {
+				value = <div
+				if.value = div
+				if.equals.field = CType
+			}
+			insertData = 1
+		}
+		# the css class to insert – the default class is csc-default. As most frames are just
+		# using different css classes you can easily get your own frames with copying the 
+		# default one and changing this class
+		15 = TEXT
+		15 {
+			value = csc-default
+			noTrimWrap = | class="envoltorio |" |
+			required = 1
+		}
+		# the closing part of the wrapper div
+		20 = TEXT
+		20.value = ><div>|</div></div>
+	}
+	110 =< tt_content.stdWrap.innerWrap.cObject.100
+  	110{
+  		#10.value = <div id="c{field:uid}" 
+  		15.value = csc-columnas
+		#20.value = >|</div>
+	}
+	120 =< tt_content.stdWrap.innerWrap.cObject.100
+  	120{
+  		#10.value = <div id="c{field:uid}" 
+  		15.value = especial
+		#20.value = >|</div>
+	}	
+}
+
+
+
+
+
+
+
+tt_content.stdWrap.innerWrap2 >
+tt_content.stdWrap {
+	innerWrap2.cObject = COA
+	innerWrap2.cObject {
+		10 = CASE 
+		10 {
+			key.field = layout
+			1 = COA
+			1{
+			 	10=TEXT
+				10.value = | 
+				20= TEXT
+				20{
+					value = Leer más
+					wrap = <div class="leermas">|</div>
+					typolink {
+						parameter.insertData = 1
+						parameter = {field:header_link}
+					}
+				}
+			}
+			2 = COA
+			2{
+				10=TEXT
+				10.value = | 
+				20 = COA
+				20 {
+					insertData = 1
+					allStdWrap.insertData = 1
+					wrap=<div class="shares">|</div>
+					50= COA
+					50 {
+						5=TEXT
+						5.value=<span class='st_fblike_hcount' 	
+
+							10 = TEXT
+							10.typolink.parameter = {field:header_link}
+							10.typolink.parameter.insertData = 1
+							10.typolink.addQueryString = 1
+							10.typolink.addQueryString.exclude = id
+							10.typolink.returnLast = url
+							10.noTrimWrap = | st_url="{$siteURL}|" |  
+						
+						
+						
+						20=TEXT
+						20.noTrimWrap = | st_title="|" ></span> | 
+						20.value = {field:header}
+						20.insertData = 1
+						
+						25=TEXT
+						25.value=<span  class='st_facebook_button' displayText='Facebook'
+						30<.10
+						35<.20 
+						45=TEXT
+						45.value=<span  class='st_plusone_button' 
+						50<.10
+						55<.20 
+						65=TEXT
+						65.value=<span  class='st_twitter_button' displayText='Tweet' 
+						70<.10
+						75<.20
+						80=TEXT
+						80.value=<span  class='st_linkedin_button' displayText='LinkedIn'
+						85<.10 
+						90<.20
+						95=TEXT
+						95.value=<span  class='st_delicious'
+						100<.10
+						110<.20
+						120=TEXT
+						120.value=<span  class='st_tumblr' 
+						130<.10
+						140<.20
+						150=TEXT
+						150.value=<span  class='st_stumbleupon' 
+						160<.10
+						170<.20
+						180=TEXT
+						180.value=<span  class='st_blinklist' 
+						190<.10
+						200<.20
+						210=TEXT
+						210.value=<span  class='st_netvibes' 
+						220<.10
+						230<.20
+						240=TEXT
+						240.value=<span  class='st_digg'  
+						250<.10
+						260<.20
+						270=TEXT
+						270.value=<span  class='st_reddit' 
+						280<.10
+						290<.20
+						300=TEXT
+						300.value=<span  class='st_meneame' 
+						310<.10
+						320<.20
+						330=TEXT
+						330.value=<span  class='st_sharethis' 
+						340<.10
+						350<.20
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+temp.stdheader < lib.stdheader
+lib.stdheader >
+
+lib.stdheader = COA
+lib.stdheader.10 < temp.stdheader
+lib.stdheader.20 = TEXT
+lib.stdheader.20 {
+	field = subheader
+	required = 1
+	dataWrap = <span class="csc-subheader">|</span>
+	htmlSpecialChars = 1
+	editIcons = tt_content:subheader,layout
+	editIcons.beforeLastTag = 1
+	editIcons.iconTitle.data = LLL:EXT:css_styled_content/pi1/locallang.xml:eIcon.subheader
+	prefixComment = 2 | Subheader:
+}
+
+
+
+
+
+tt_content.image.20.layout {
+		# intext-right-nowrap
+		5 = TEXT
+		5.value = <div class="csc-textpic csc-textpic-center header-below csc-textpic-above###CLASSES###">###IMAGES###</div><div>###TEXT###</div>
+		5.insertData = 1
+		# intext-left-nowrap
+		6 = TEXT
+		6.value = <div class="csc-textpic csc-textpic-right header-below csc-textpic-above###CLASSES###">###IMAGES###</div><div>###TEXT###</div>
+		6.insertData = 1
+		7 = TEXT
+		7.value = <div class="csc-textpic csc-textpic-left header-below csc-textpic-above###CLASSES###">###IMAGES###</div><div>###TEXT###</div>
+		7.insertData = 1
+}
+
+
+
+# *****************
+# CType: textpic
+# *****************
+tt_content.textpic >
+tt_content.textpic = COA
+tt_content.textpic {
+	10 = COA
+	10.if.value = 0,1,2,8,9,10,17,18
+	10.if.isInList.field = imageorient
+	10.10 = < lib.stdheader
+
+	20  = < tt_content.image.20
+	20 {
+		text.10 = COA
+		text.10 {
+			if.value = 5,6,7,25,26
+			if.isInList.field = imageorient
+			10 = < lib.stdheader
+			10.stdWrap.dataWrap = <div class="csc-textpicHeader csc-textpicHeader-{field:imageorient}">|</div>
+		}
+		text.20 = < tt_content.text.20
+		text.wrap = <div class="csc-textpic-text"> | </div>
+	}
+}
+
+tt_content.media >
+# *****************
+# CType: media
+# *****************
+# (also used for rendering 'textpic' type):
+tt_content.media = COA
+tt_content.media{
+	10 = COA
+	10.if.value = 0,1,2,8,9,10,17,18
+	10.if.isInList.field = imageorient
+	10.10 = < lib.stdheader
+}
+tt_content.media.20 = USER
+tt_content.media.20 {
+	userFunc = tx_march8_media->render_media
+	textPos.field = imageorient
+
+	video = MEDIA
+	video {
+		textPos.field = imageorient
+		flexParams.field = pi_flexform
+		type = video
+		renderType = auto
+		allowEmptyUrl = 0
+		forcePlayer = 1
+
+		fileExtHandler {
+			default = MEDIA
+			avi = MEDIA
+			asf = MEDIA
+			class = MEDIA
+			wmv = MEDIA
+			mp3 = SWF
+			mp4 = SWF
+			m4v = SWF
+			swa = SWF
+			flv = SWF
+			swf = SWF
+			mov = QT
+			m4v = QT
+			m4a = QT
+		}
+
+		mimeConf.swfobject < tt_content.swfobject.20
+		mimeConf.qtobject < tt_content.qtobject.20
+		stdWrap {
+				editIcons = tt_content: pi_flexform, bodytext
+				editIcons.iconTitle.data = LLL:EXT:css_styled_content/pi1/locallang.xml:eIcon.multimedia
+		
+				prefixComment = 2 | Media element:
+		}
+			
+	}
+	text.10 = COA
+	text.10 {
+		if.value = 5,6,7,25,26
+		if.isInList.field = imageorient
+		10 = < lib.stdheader
+		10.stdWrap.dataWrap = <div class="csc-textpicHeader csc-textpicHeader-{field:imageorient}">|</div>
+	}
+	text.20 = < tt_content.text.20
+	text.wrap = <div class="csc-textpic-text"> | </div>
+	
+	textMargin = {$styles.content.imgtext.textMargin}
+	layout = CASE
+	layout {
+		key.field = imageorient
+		# above-center
+		default = COA
+		default{
+		 10 = TEXT
+		 10.value = <div class="csc-textpic csc-textpic-center csc-textpic-above###CLASSES###"><div class="mediaelement">
+		 20 < tt_content.media.20.video
+		 30 = TEXT
+		 30.value=</div>###TEXT###</div><div class="csc-textpic-clear"><!-- --></div>
+		}
+		# above-right
+		1 = COA
+		1{
+		 10 = TEXT
+		 10.value = <div class="csc-textpic csc-textpic-right csc-textpic-above###CLASSES###"><div class="mediaelement">
+		 20 < tt_content.media.20.video
+		 30 = TEXT
+		 30.value=</div>###TEXT###</div><div class="csc-textpic-clear"><!-- --></div>
+		}		
+		
+		# above-left
+		2 = COA
+		2{
+		 10 = TEXT
+		 10.value = <div class="csc-textpic csc-textpic-left csc-textpic-above###CLASSES###"><div class="mediaelement">
+		 20 < tt_content.media.20.video
+		 30 = TEXT
+		 30.value=</div>###TEXT###</div><div class="csc-textpic-clear"><!-- --></div>
+		}
+
+
+		5 = COA
+		5{
+		 10 = TEXT
+		 10.value = <div class="csc-textpic csc-textpic-center header-below csc-textpic-above###CLASSES###"><div class="mediaelement">
+		 20 < tt_content.media.20.video
+		 30 = TEXT
+		 30.value=</div></div><div>###TEXT###</div>
+		 30.insertData = 1
+		}
+
+
+		6 = COA
+		6{
+		 10 = TEXT
+		 10.value = <div class="csc-textpic csc-textpic-right header-below csc-textpic-above###CLASSES###"><div class="mediaelement">
+		 20 < tt_content.media.20.video
+		 30 = TEXT
+		 30.value=</div></div><div>###TEXT###</div>
+		 30.insertData = 1
+		}
+
+
+		7 = COA
+		7{
+		 10 = TEXT
+		 10.value = <div class="csc-textpic csc-textpic-left header-below csc-textpic-above###CLASSES###"><div class="mediaelement">
+		 20 < tt_content.media.20.video
+		 30 = TEXT
+		 30.value=</div></div><div>###TEXT###</div>
+		 30.insertData = 1
+		}
+
+		# below-center
+		8 = COA
+		8{
+			10 = TEXT
+			10.value=<div class="csc-textpic csc-textpic-center csc-textpic-below###CLASSES###">###TEXT###<div class="mediaelement">
+			20 < tt_content.media.20.video
+		 	30 = TEXT
+		 	30.value=</div></div><div class="csc-textpic-clear"><!-- --></div>
+		
+		}
+
+		# below-right
+		9 = COA
+		9{
+			10 = TEXT
+			10.value=<div class="csc-textpic csc-textpic-right csc-textpic-below###CLASSES###">###TEXT###<div class="mediaelement">
+			20 < tt_content.media.20.video
+		 	30 = TEXT
+		 	30.value=</div></div><div class="csc-textpic-clear"><!-- --></div>
+		}
+
+		# below-left
+		10 = COA
+		10{
+			10 = TEXT
+			10.value=<div class="csc-textpic csc-textpic-left csc-textpic-below###CLASSES###">###TEXT###<div class="mediaelement">
+			20 < tt_content.media.20.video
+		 	30 = TEXT
+		 	30.value=</div></div><div class="csc-textpic-clear"><!-- --></div>
+		}
+
+		17 = COA
+		17{
+			10 = TEXT
+			10.value=<div class="csc-textpic csc-textpic-intext-right###CLASSES###"><div class="mediaelement">
+			20 < tt_content.media.20.video
+		 	30 = TEXT
+		 	30.value=</div>###TEXT###<div class="csc-textpic-clear"><!-- --></div></div>
+		}
+		
+		
+		18 = COA
+		18{
+			10 = TEXT
+			10.value=<div class="csc-textpic csc-textpic-intext-left###CLASSES###"><div class="mediaelement">
+			20 < tt_content.media.20.video
+		 	30 = TEXT
+		 	30.value=</div>###TEXT###<div class="csc-textpic-clear"><!-- --></div></div>
+		}		
+
+		25 = COA
+		25{
+			10 = TEXT
+			10.value = <div class="csc-textpic csc-textpic-intext-right-nowrap###CLASSES###"><div class="mediaelement">
+			20 < tt_content.media.20.video
+			30 = TEXT
+			30.value = </div><div style="margin-right:{register:rowWidthPlusTextMargin}px;">###TEXT###</div></div><div class="csc-textpic-clear"><!-- --></div>
+			30.insertData = 1
+
+		}
+
+		26 = COA
+		26{
+			10 = TEXT
+			10.value = <div class="csc-textpic csc-textpic-intext-left-nowrap###CLASSES###"><div class="mediaelement">
+			20 < tt_content.media.20.video
+			30 = TEXT
+			30.value = </div><div style="margin-left:{register:rowWidthPlusTextMargin}px;">###TEXT###</div></div><div class="csc-textpic-clear"><!-- --></div>
+			30.insertData = 1
+
+		}
+
+
+	}
+
+
+
+	editIcons = tt_content : image [imageorient|imagewidth|imageheight], [imagecols|image_noRows|imageborder],[image_link|image_zoom],[image_compression|image_effects|image_frames],imagecaption[imagecaption_position]
+	editIcons.iconTitle.data = LLL:EXT:css_styled_content/pi1/locallang.xml:eIcon.images
+
+
+
+	stdWrap.prefixComment = 2 | Image block:
+}
+
+
+
+
+
+
+
+
+
+
+
+
+plugin.tx_march8._CSS_DEFAULT_STYLE (
+DIV.csc-textpic-intext-right-nowrap .mediaelement,DIV.csc-textpic-intext-right .mediaelement{
+	float:right;
+}
+
+DIV.csc-textpic-intext-left-nowrap .mediaelement,DIV.csc-textpic-intext-left .mediaelement{
+	float:left;
+}
+
+
+
+.kwicks {
+	/* recommended styles for kwicks ul container */
+	list-style: none;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	overflow:hidden;
+}
+.kwicks li{
+
+
+	/*do not change these */
+	display: block;
+	overflow: hidden;
+	padding: 0;  /* if you need padding, do so with an inner div (or implement your own box-model hack) */
+}
+.kwicks.horizontal li {
+	/* This is optional and will be disregarded by the script.  However, it should be provided for non-JS enabled browsers. */
+	margin-right: 5px; /*Set to same as spacing option. */	
+	float: left;
+}
+.kwicks.vertical  li{
+	/* This is optional and will be disregarded by the script.  However, it should be provided for non-JS enabled browsers. */
+	margin-bottom: 5px; /*Set to same as spacing option. */	
+}
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##############################################################
+# dsConfig is the library included in each TV datastructures
+##############################################################
+
+#Página
+dsConfig = COA
+dsConfig.10 = CASE
+dsConfig.10 {
+	key.field = field_mainHeaderVisibility
+	default = LOAD_REGISTER
+	default.mainHeaderVisibility = {$mainHeaderVisibility}
+	1 = LOAD_REGISTER
+	1.mainHeaderVisibility = 1
+	2 = LOAD_REGISTER
+	2.mainHeaderVisibility = 0
+}
+
+#Página
+
+dsConfig.20 = CASE
+dsConfig.20 {
+	key.field = field_mainFooterVisibility
+	default = LOAD_REGISTER
+	default.mainFooterVisibility = {$mainFooterVisibility}
+	1 = LOAD_REGISTER
+	1.mainFooterVisibility = 1
+	2 = LOAD_REGISTER
+	2.mainFooterVisibility = 0
+}
+
+
+
+dsConfig.30 = CASE
+dsConfig.30 {
+	key.field = field_column1Mode
+	default = LOAD_REGISTER
+	default.column1Mode= {$column1Mode}
+	1 = LOAD_REGISTER
+	1.column1Mode= 1
+	2 = LOAD_REGISTER
+	2.column1Mode= 0
+}
+
+
+dsConfig.40 = CASE
+dsConfig.40 {
+	key.field = field_column2Mode
+	default = LOAD_REGISTER
+	default.column2Mode= {$column2Mode}
+	1 = LOAD_REGISTER
+	1.column2Mode= 1
+	2 = LOAD_REGISTER
+	2.column2Mode= 0
+}
+
+
+
+
+
+
+
+
+#Página
+dsConfig.outerTop.contentSource = {$outerTop.source}
+dsConfig.outerBottom.contentSource = {$outerBottom.source}
+
+
+dsConfig.topNav.contentSource = {$topNav.source}
+dsConfig.header.contentSource = {$header.source}
+dsConfig.mainMenu.contentSource = {$mainMenu.source}
+dsConfig.topFeature.contentSource = {$topFeature.source}
+dsConfig.topBreadcrumb.contentSource = {$topBreadcrumb.source}
+dsConfig.column1.contentSource = {$column1.source}
+dsConfig.mainHeader.contentSource = {$mainHeader.source}
+dsConfig.mainContent.contentSource = {$mainContent.source}
+dsConfig.mainFooter.contentSource = {$mainFooter.source}
+dsConfig.column2.contentSource = {$column2.source}
+dsConfig.bottomBreadcrumb.contentSource = {$bottomBreadcrumb.source}
+dsConfig.bottomFeature.contentSource = {$bottomFeature.source}
+dsConfig.bottomMenu.contentSource = {$bottomMenu.source}
+dsConfig.footer.contentSource = {$footer.source}
+dsConfig.bottomNav.contentSource = {$bottomNav.source}
+
+
+
+
+
+
+
+
+
+
+[treeLevel = 0]
+	page.bodyTagAdd = class="home"
+[global]
+[treeLevel = 1]
+	page.bodyTagAdd = class="seccion"
+[global]
+[treeLevel = 2]
+	page.bodyTagAdd = class="interior"
+[global] 
+[globalVar=TSFE:page|layout=1] 
+	page.bodyTagAdd = class="home"
+[global]
+[globalVar=TSFE:page|layout=2] 
+	page.bodyTagAdd = class="seccion"
+[global]
+[globalVar=TSFE:page|layout=3] 
+	page.bodyTagAdd = class="interior"
+[global] 

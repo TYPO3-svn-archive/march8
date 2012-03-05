@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+	<meta type="array">
+		<langDisable>1</langDisable>
+		<disableDataPreview>1</disableDataPreview>
+	</meta>
+	<ROOT type="array">
+		<tx_templavoila type="array">
+			<title>ROOT</title>
+			<description>Inner mapping to body tag. Remember to also inclube body tag in the header parts</description>
+		</tx_templavoila>
+		<type>array</type>
+		<el type="array">
+			<field_ds_config_library type="array">
+				<type>no_map</type>
+				<tx_templavoila type="array">
+					<title>DS Configuration Library</title>
+					<description>No mapping</description>
+					<sample_data type="array">
+						<numIndex index="0"></numIndex>
+					</sample_data>
+					<eType>TypoScriptObject</eType>
+					<TypoScriptObjPath>dsConfig</TypoScriptObjPath>
+				</tx_templavoila>
+			</field_ds_config_library>
+		<field_topFeature type="array">
+				<tx_templavoila type="array">
+					<title>topFeature Content</title>
+					<description>Outer to #topFeature</description>
+					<sample_data type="array">
+						<numIndex index="0"></numIndex>
+					</sample_data>
+					<eType>ce</eType>
+					<tags>div:outer</tags>
+					<TypoScript_constants>
+						<containerWidth>{$containerWidth.table2areas.topFeature}</containerWidth>
+                    </TypoScript_constants>
+					<TypoScript>
+						<![CDATA[
+						10 = LOAD_REGISTER
+						10 {
+							tempContainerWidth = {$containerWidth}
+							tempContainerWidth.dataWrap = | + {register:topFeatureLeftPadding} + {register:topFeatureRightPadding}
+							containerWidth.data = register:tempContainerWidth
+							containerWidth.prioriCalc = intval
+							maxImageWidth.data = register:containerWidth
+							originalContainerWidth.data = register:containerWidth
+							nestingLevel = 0
+							containerElementPresent = 0
+						}
+						20 = RECORDS
+						20 {
+							source.current = 1
+							tables = tt_content
+							stdWrap{
+								required = 1
+								dataWrap = |
+								postCObject = LOAD_REGISTER
+								postCObject.contentElementsPresent = 1
+							}
+						}
+						30 = LOAD_REGISTER
+						30 {
+							notopFeatureContentFlag = 1
+							notopFeatureContentFlag.if.isLessThan.stdWrap.dataWrap = {register:contentElementsPresent}{register:containerElementPresent}
+							notopFeatureContentFlag.if.value = 1
+						}
+						]]>
+					</TypoScript>
+					<enableDragDrop>1</enableDragDrop>
+					<oldStyleColumnNumber type="integer">0</oldStyleColumnNumber>
+				</tx_templavoila>
+				<TCEforms type="array">
+					<config type="array">
+						<type>group</type>
+						<internal_type>db</internal_type>
+						<allowed>tt_content</allowed>
+						<size>5</size>
+						<maxitems>200</maxitems>
+						<minitems>0</minitems>
+						<multiple>1</multiple>
+						<show_thumbs>1</show_thumbs>
+					</config>
+					<label></label>
+				</TCEforms>
+			</field_topFeature>									
+
+
+			<field_column1 type="array">
+				<tx_templavoila type="array">
+					<title>Column 1</title>
+					<description>Outer to #column1</description>
+					<sample_data type="array">
+						<numIndex index="0"></numIndex>
+					</sample_data>
+					<eType>ce</eType>
+					<tags>div:outer</tags>
+					<TypoScript_constants>
+						<containerWidth>{$containerWidth.table2areas.column1}</containerWidth>
+						<contentSource>{$dsConfig.column1.contentSource}</contentSource>						
+                    </TypoScript_constants>
+					<TypoScript>
+						<![CDATA[
+							10 = LOAD_REGISTER
+							10 {
+								containerWidth = {$containerWidth}
+								maxImageWidth = {$containerWidth}
+								originalContainerWidth.data = register:containerWidth
+								nestingLevel = 0
+							}
+							20 = RECORDS
+							20 {
+								wrap =|
+								source.current = 1
+								tables = tt_content
+							}
+						]]>						
+					</TypoScript>
+					<enableDragDrop>1</enableDragDrop>
+					<oldStyleColumnNumber type="integer">0</oldStyleColumnNumber>
+				</tx_templavoila>
+				<TCEforms type="array">
+					<config type="array">
+						<type>group</type>
+						<internal_type>db</internal_type>
+						<allowed>tt_content</allowed>
+						<size>5</size>
+						<maxitems>200</maxitems>
+						<minitems>0</minitems>
+						<multiple>1</multiple>
+						<show_thumbs>1</show_thumbs>
+					</config>
+					<label></label>
+				</TCEforms>
+			</field_column1>
+
+			<field_mainContent type="array">
+				<tx_templavoila type="array">
+					<title>Main Content (Content Block 1)</title>
+					<description>Outer to #contentBlock-1</description>
+					<sample_data type="array">
+						<numIndex index="0"></numIndex>
+					</sample_data>
+					<eType>ce</eType>
+					<tags>div:outer</tags>
+					<TypoScript_constants>
+						<containerWidth>{$containerWidth.table2areas.mainContent}</containerWidth>
+                    </TypoScript_constants>
+					<TypoScript>
+						<![CDATA[
+						10 = LOAD_REGISTER
+						10 {
+							containerWidth = {$containerWidth}
+							maxImageWidth = {$containerWidth}
+							originalContainerWidth.data = register:containerWidth
+							nestingLevel = 0
+						}
+						20 = COA
+						20 {
+							wrap = |
+
+						}
+						20.20 = RECORDS
+						20.20 {
+							source.current = 1
+							tables = tt_content
+						}
+						]]>
+					</TypoScript>
+					<enableDragDrop>1</enableDragDrop>
+					<oldStyleColumnNumber type="integer">0</oldStyleColumnNumber>
+				</tx_templavoila>
+				<TCEforms type="array">
+					<config type="array">
+						<type>group</type>
+						<internal_type>db</internal_type>
+						<allowed>tt_content</allowed>
+						<size>5</size>
+						<maxitems>200</maxitems>
+						<minitems>0</minitems>
+						<multiple>1</multiple>
+						<show_thumbs>1</show_thumbs>
+					</config>
+					<label></label>
+				</TCEforms>
+			</field_mainContent>		
+
+
+	
+			<field_bottomFeature type="array">
+				<tx_templavoila type="array">
+					<title>bottomFeature Content</title>
+					<description>Outer to #bottomFeature</description>
+					<sample_data type="array">
+						<numIndex index="0"></numIndex>
+					</sample_data>
+					<eType>ce</eType>
+					<tags>div:outer</tags>
+					<TypoScript_constants>
+						<containerWidth>{$containerWidth.table2areas.bottomFeature}</containerWidth>
+                    </TypoScript_constants>
+					<TypoScript>
+						<![CDATA[
+						10 = LOAD_REGISTER
+						10 {
+							tempContainerWidth = {$containerWidth}
+							tempContainerWidth.dataWrap = | + {register:bottomFeatureLeftPadding} + {register:bottomFeatureRightPadding}
+							containerWidth.data = register:tempContainerWidth
+							containerWidth.prioriCalc = intval
+							maxImageWidth.data = register:containerWidth
+							originalContainerWidth.data = register:containerWidth
+							nestingLevel = 0
+							containerElementPresent = 0
+						}
+						20 = RECORDS
+						20 {
+							source.current = 1
+							tables = tt_content
+							stdWrap{
+								required = 1
+								dataWrap = |
+								postCObject = LOAD_REGISTER
+								postCObject.contentElementsPresent = 1
+							}
+						}
+						30 = LOAD_REGISTER
+						30 {
+							nobottomFeatureContentFlag = 1
+							nobottomFeatureContentFlag.if.isLessThan.stdWrap.dataWrap = {register:contentElementsPresent}{register:containerElementPresent}
+							nobottomFeatureContentFlag.if.value = 1
+						}
+						]]>
+					</TypoScript>
+					<enableDragDrop>1</enableDragDrop>
+					<oldStyleColumnNumber type="integer">0</oldStyleColumnNumber>
+				</tx_templavoila>
+				<TCEforms type="array">
+					<config type="array">
+						<type>group</type>
+						<internal_type>db</internal_type>
+						<allowed>tt_content</allowed>
+						<size>5</size>
+						<maxitems>200</maxitems>
+						<minitems>0</minitems>
+						<multiple>1</multiple>
+						<show_thumbs>1</show_thumbs>
+					</config>
+					<label></label>
+				</TCEforms>
+			</field_bottomFeature>							
+		
+				
+		</el>
+	</ROOT>
+</T3DataStructure>

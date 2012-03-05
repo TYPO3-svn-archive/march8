@@ -1,0 +1,552 @@
+		<field_content_block_1 type="array">
+				<tx_templavoila type="array">
+					<title>Main Content (Content Block 1)</title>
+					<description>Outer to #contentBlock-1</description>
+					<sample_data type="array">
+						<numIndex index="0"></numIndex>
+					</sample_data>
+					<eType>ce</eType>
+					<tags>div:outer</tags>
+					<TypoScript_constants>
+<containerWidth>{$containerWidth.f1f.contentBlock-1}</containerWidth>
+                    </TypoScript_constants>
+					<TypoScript>
+<![CDATA[
+10 = LOAD_REGISTER
+10 {
+	containerWidth = {$containerWidth}
+	maxImageWidth = {$containerWidth}
+	originalContainerWidth.data = register:containerWidth
+	nestingLevel = 0
+}
+20 = COA
+20 {
+	wrap = <div id="contentBlock-1"><!--TYPO3SEARCH_begin-->|<!--TYPO3SEARCH_end--><div class="clearOnly">&nbsp;</div></div>
+	10 = TEXT
+	10 {
+		data = page:title
+		htmlSpecialChars = 1
+		wrap = <h1 class="csc-firstHeader centralHeadline">|</h1>
+		if {
+			value.data = register:autoMainHeadline
+			equals = 0
+			negate = 1
+		}
+	}
+}
+20.20 = RECORDS
+20.20 {
+	source.current = 1
+	tables = tt_content
+}
+]]>
+					</TypoScript>
+					<enableDragDrop>1</enableDragDrop>
+					<oldStyleColumnNumber type="integer">0</oldStyleColumnNumber>
+				</tx_templavoila>
+				<TCEforms type="array">
+					<config type="array">
+						<type>group</type>
+						<internal_type>db</internal_type>
+						<allowed>tt_content</allowed>
+						<size>5</size>
+						<maxitems>200</maxitems>
+						<minitems>0</minitems>
+						<multiple>1</multiple>
+						<show_thumbs>1</show_thumbs>
+					</config>
+					<label></label>
+				</TCEforms>
+			</field_content_block_1>
+						
+			<field_content_block_1 type="array">
+				<tx_templavoila type="array">
+					<title>Main Content (Content Block 1)</title>
+					<description>Outer to #contentBlock-1</description>
+					<sample_data type="array">
+						<numIndex index="0"></numIndex>
+					</sample_data>
+					<eType>ce</eType>
+					<tags>div:outer</tags>
+					<TypoScript_constants>
+<containerWidth>{$containerWidth.f3a.contentBlock-1}</containerWidth>
+                    </TypoScript_constants>
+					<TypoScript>
+<![CDATA[
+10 = LOAD_REGISTER
+10 {
+	containerWidth = {$containerWidth}
+	maxImageWidth = {$containerWidth}
+	originalContainerWidth.data = register:containerWidth
+	nestingLevel = 0
+}
+20 = COA
+20 {
+	wrap = <div id="contentBlock-1"><!--TYPO3SEARCH_begin-->|<!--TYPO3SEARCH_end--><div class="clearOnly">&nbsp;</div></div>
+	10 = TEXT
+	10 {
+		data = page:title
+		htmlSpecialChars = 1
+		wrap = <h1 class="csc-firstHeader centralHeadline">|</h1>
+		if {
+			value.data = register:autoMainHeadline
+			equals = 0
+			negate = 1
+		}
+	}
+}
+20.20 = RECORDS
+20.20 {
+	source.current = 1
+	tables = tt_content
+}
+]]>
+					</TypoScript>
+					<enableDragDrop>1</enableDragDrop>
+					<oldStyleColumnNumber type="integer">0</oldStyleColumnNumber>
+				</tx_templavoila>
+				<TCEforms type="array">
+					<config type="array">
+						<type>group</type>
+						<internal_type>db</internal_type>
+						<allowed>tt_content</allowed>
+						<size>5</size>
+						<maxitems>200</maxitems>
+						<minitems>0</minitems>
+						<multiple>1</multiple>
+						<show_thumbs>1</show_thumbs>
+					</config>
+					<label></label>
+				</TCEforms>
+			</field_content_block_1>
+			<field_feature type="array">
+				<tx_templavoila type="array">
+					<title>Feature Content</title>
+					<description>Outer to #feature</description>
+					<sample_data type="array">
+						<numIndex index="0"></numIndex>
+					</sample_data>
+					<eType>ce</eType>
+					<tags>div:outer</tags>
+					<TypoScript_constants>
+<containerWidth>{$containerWidth.p1f.feature}</containerWidth>
+                    </TypoScript_constants>
+					<TypoScript>
+<![CDATA[
+10 = LOAD_REGISTER
+10 {
+	tempContainerWidth = {$containerWidth}
+	tempContainerWidth.dataWrap = | + {register:featureLeftPadding} + {register:featureRightPadding}
+	containerWidth.data = register:tempContainerWidth
+	containerWidth.prioriCalc = intval
+	maxImageWidth.data = register:containerWidth
+	originalContainerWidth.data = register:containerWidth
+	nestingLevel = 0
+	containerElementPresent = 0
+}
+20 = RECORDS
+20 {
+	source.current = 1
+	tables = tt_content
+	stdWrap{
+		required = 1
+		dataWrap = <div id="feature" class="{register:featureClass}"><!--TYPO3SEARCH_begin--> | <!--TYPO3SEARCH_end--><div class="clearOnly">&nbsp;</div></div><!-- end #feature  -->
+		postCObject = LOAD_REGISTER
+		postCObject.contentElementsPresent = 1
+	}
+}
+30 = LOAD_REGISTER
+30 {
+	noFeatureContentFlag = 1
+	noFeatureContentFlag.if.isLessThan.stdWrap.dataWrap = {register:contentElementsPresent}{register:containerElementPresent}
+	noFeatureContentFlag.if.value = 1
+}
+]]>
+					</TypoScript>
+					<enableDragDrop>1</enableDragDrop>
+					<oldStyleColumnNumber type="integer">0</oldStyleColumnNumber>
+				</tx_templavoila>
+				<TCEforms type="array">
+					<config type="array">
+						<type>group</type>
+						<internal_type>db</internal_type>
+						<allowed>tt_content</allowed>
+						<size>5</size>
+						<maxitems>200</maxitems>
+						<minitems>0</minitems>
+						<multiple>1</multiple>
+						<show_thumbs>1</show_thumbs>
+					</config>
+					<label></label>
+				</TCEforms>
+			</field_feature>
+			<field_generated_content_1 type="array">
+				<tx_templavoila type="array">
+					<title>Generated Content 1</title>
+					<description>Outer to #generatedContent-1</description>
+					<sample_data type="array">
+						<numIndex index="0"></numIndex>
+					</sample_data>
+					<eType>none</eType>
+					<tags>div:outer</tags>
+					<TypoScript_constants>
+<containerWidth>{$containerWidth.f1f.generatedContent-1}</containerWidth>
+<contentSource>{$dsConfig.generatedContent-1.contentSource}</contentSource>
+                    </TypoScript_constants>
+					<TypoScript>
+<![CDATA[
+10 = LOAD_REGISTER
+10 {
+	containerWidth = {$containerWidth}
+	maxImageWidth = {$containerWidth}
+	originalContainerWidth.data = register:containerWidth
+	nestingLevel = 0
+}
+20 = CONTENT
+20 {
+	wrap = <div id="generatedContent-1">|</div><!-- end #generatedContent-1  -->
+	table = tt_content
+	select.pidInList = {$contentSource}
+	select.languageField = sys_language_uid
+}
+]]>
+					</TypoScript>
+					<oldStyleColumnNumber type="integer">0</oldStyleColumnNumber>
+				</tx_templavoila>
+			</field_generated_content_1>
+			
+									<field_feature type="array">
+				<tx_templavoila type="array">
+					<title>Feature Content</title>
+					<description>Outer to #feature</description>
+					<sample_data type="array">
+						<numIndex index="0"></numIndex>
+					</sample_data>
+					<eType>ce</eType>
+					<tags>div:outer</tags>
+					<TypoScript_constants>
+<containerWidth>{$containerWidth.f1f.feature}</containerWidth>
+                    </TypoScript_constants>
+					<TypoScript>
+<![CDATA[
+10 = LOAD_REGISTER
+10 {
+	tempContainerWidth = {$containerWidth}
+	tempContainerWidth.dataWrap = | + {register:featureLeftPadding} + {register:featureRightPadding}
+	containerWidth.data = register:tempContainerWidth
+	containerWidth.prioriCalc = intval
+	maxImageWidth.data = register:containerWidth
+	originalContainerWidth.data = register:containerWidth
+	nestingLevel = 0
+	containerElementPresent = 0
+}
+20 = RECORDS
+20 {
+	source.current = 1
+	tables = tt_content
+	stdWrap {
+		required = 1
+		dataWrap = <div id="feature" class="{register:featureClass}"><!--TYPO3SEARCH_begin--> | <!--TYPO3SEARCH_end--><div class="clearOnly">&nbsp;</div></div><!-- end #feature  -->
+		## Set to load register only if content is present (required = 1) so that preCodeFeature & postCodeFeature is properly triggered
+		postCObject = LOAD_REGISTER
+		postCObject.contentElementsPresent = 1
+	}
+}
+30 = LOAD_REGISTER
+30 {
+	noFeatureContentFlag = 1
+	noFeatureContentFlag.if.isLessThan.stdWrap.dataWrap = {register:contentElementsPresent}{register:containerElementPresent}
+	noFeatureContentFlag.if.value = 1
+}
+]]>
+					</TypoScript>
+					<enableDragDrop>1</enableDragDrop>
+					<oldStyleColumnNumber type="integer">0</oldStyleColumnNumber>
+				</tx_templavoila>
+				<TCEforms type="array">
+					<config type="array">
+						<type>group</type>
+						<internal_type>db</internal_type>
+						<allowed>tt_content</allowed>
+						<size>5</size>
+						<maxitems>200</maxitems>
+						<minitems>0</minitems>
+						<multiple>1</multiple>
+						<show_thumbs>1</show_thumbs>
+					</config>
+					<label></label>
+				</TCEforms>
+			</field_feature>
+			<field_content_block_2 type="array">
+				<tx_templavoila type="array">
+					<title>Secondary Content (Content Block 2)</title>
+					<description>Outer to #contentBlock-2</description>
+					<sample_data type="array">
+						<numIndex index="0"></numIndex>
+					</sample_data>
+					<eType>ce</eType>
+					<tags>div:outer</tags>
+					<TypoScript_constants>
+<containerWidth>{$containerWidth.f3a.contentBlock-2}</containerWidth>
+                    </TypoScript_constants>
+					<TypoScript>
+<![CDATA[
+10 = LOAD_REGISTER
+10 {
+	containerWidth = {$containerWidth}
+	maxImageWidth = {$containerWidth}
+	originalContainerWidth.data = register:containerWidth
+	nestingLevel = 0
+}
+20 = RECORDS
+20 {
+	wrap = <div id="contentBlock-2"><!--TYPO3SEARCH_begin-->|<!--TYPO3SEARCH_end--><div class="clearOnly">&nbsp;</div></div>
+	source.current = 1
+	tables = tt_content
+}
+]]>
+					</TypoScript>
+					<enableDragDrop>1</enableDragDrop>
+					<oldStyleColumnNumber type="integer">0</oldStyleColumnNumber>
+				</tx_templavoila>
+				<TCEforms type="array">
+					<config type="array">
+						<type>group</type>
+						<internal_type>db</internal_type>
+						<allowed>tt_content</allowed>
+						<size>5</size>
+						<maxitems>200</maxitems>
+						<minitems>0</minitems>
+						<multiple>1</multiple>
+						<show_thumbs>1</show_thumbs>
+					</config>
+					<label></label>
+				</TCEforms>
+			</field_content_block_2>
+			<field_generated_content_2 type="array">
+				<tx_templavoila type="array">
+					<title>Generated Content 2</title>
+					<description>Outer to #generatedContent-2</description>
+					<sample_data type="array">
+						<numIndex index="0"></numIndex>
+					</sample_data>
+					<eType>none</eType>
+					<tags>div:outer</tags>
+					<TypoScript_constants>
+<containerWidth>{$containerWidth.f1f.generatedContent-2}</containerWidth>
+<contentSource>{$dsConfig.generatedContent-2.contentSource}</contentSource>
+                    </TypoScript_constants>
+					<TypoScript>
+<![CDATA[
+10 = LOAD_REGISTER
+10 {
+	containerWidth = {$containerWidth}
+	maxImageWidth = {$containerWidth}
+	originalContainerWidth.data = register:containerWidth
+	nestingLevel = 0
+}
+20 = CONTENT
+20 {
+	wrap = <div id="generatedContent-2">|</div><!-- end #generatedContent-2  -->
+	table = tt_content
+	select.pidInList = {$contentSource}
+	select.languageField = sys_language_uid
+}
+]]>
+					</TypoScript>
+					<oldStyleColumnNumber type="integer">0</oldStyleColumnNumber>
+				</tx_templavoila>
+			</field_generated_content_2>			
+			<field_content_block_3 type="array">
+				<tx_templavoila type="array">
+					<title>Additional Content (Content Block 3)</title>
+					<description>Outer to #contentBlock-3</description>
+					<sample_data type="array">
+						<numIndex index="0"></numIndex>
+					</sample_data>
+					<eType>ce</eType>
+					<tags>div:outer</tags>
+					<TypoScript_constants>
+<containerWidth>{$containerWidth.f3a.contentBlock-3}</containerWidth>
+                    </TypoScript_constants>
+					<TypoScript>
+<![CDATA[
+10 = LOAD_REGISTER
+10 {
+	containerWidth = {$containerWidth}
+	maxImageWidth = {$containerWidth}
+	originalContainerWidth.data = register:containerWidth
+	nestingLevel = 0
+}
+20 = RECORDS
+20 {
+	wrap = <div id="contentBlock-3"><!--TYPO3SEARCH_begin-->|<!--TYPO3SEARCH_end--><div class="clearOnly">&nbsp;</div></div>
+	source.current = 1
+	tables = tt_content
+}
+]]>
+					</TypoScript>
+					<enableDragDrop>1</enableDragDrop>
+					<oldStyleColumnNumber type="integer">0</oldStyleColumnNumber>
+				</tx_templavoila>
+				<TCEforms type="array">
+					<config type="array">
+						<type>group</type>
+						<internal_type>db</internal_type>
+						<allowed>tt_content</allowed>
+						<size>5</size>
+						<maxitems>200</maxitems>
+						<minitems>0</minitems>
+						<multiple>1</multiple>
+						<show_thumbs>1</show_thumbs>
+					</config>
+					<label></label>
+				</TCEforms>
+			</field_content_block_3>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<?php
+	/***************************************************************
+	*  Copyright notice
+	*
+	*  (c) 2009 Peter Klein <pmk@io.dk>
+	*  All rights reserved
+	*
+	*  This script is part of the TYPO3 project. The TYPO3 project is
+	*  free software; you can redistribute it and/or modify
+	*  it under the terms of the GNU General Public License as published by
+	*  the Free Software Foundation; either version 2 of the License, or
+	*  (at your option) any later version.
+	*
+	*  The GNU General Public License can be found at
+	*  http://www.gnu.org/copyleft/gpl.html.
+	*
+	*  This script is distributed in the hope that it will be useful,
+	*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+	*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	*  GNU General Public License for more details.
+	*
+	*  This copyright notice MUST APPEAR in all copies of the script!
+	***************************************************************/
+	/**
+ * [CLASS/FUNCTION INDEX of SCRIPT]
+ *
+ *
+ *
+ *   52: class tx_pmktsvoila_pi1 extends tslib_pibase
+ *   71:     function getTVUids($content, $conf)
+ *   90:     function getTVContent($content, $conf)
+ *
+ * TOTAL FUNCTIONS: 2
+ * (This index is automatically created/updated by the extension "extdeveval")
+ *
+ */
+
+	require_once(PATH_tslib.'class.tslib_pibase.php');
+	require_once(t3lib_extMgm::extPath('templavoila').'class.tx_templavoila_api.php');
+
+	/**
+	 * Plugin 'PMK TSVoila' for the 'pmktsvoila' extension.
+	 *
+	 * This extension provides an alternate TemplaVoila rendering.
+	 * With this you can render each TV column separately in your Typoscript setup.
+	 * (Similar to the "old-style" colPos method.)
+	 *
+	 * @author Peter Klein <pmk@io.dk>
+	 * @package TYPO3
+	 * @subpackage tx_pmktsvoila
+	 */
+	class tx_pmktsvoila_pi1 extends tslib_pibase {
+		var $prefixId = 'tx_pmktsvoila_pi1';
+		// Same as class name
+		var $scriptRelPath = 'pi1/class.tx_pmktsvoila_pi1.php'; // Path to this script relative to the extension dir.
+		var $extKey = 'pmktsvoila'; // The extension key.
+		var $pi_checkCHash = true;
+
+
+		/**
+		 * Returns comma separated list of tt_content uids used on TemplaVoila page.
+		 *
+		 * Allowed $conf parameters:
+		 *   pageUid; Id of page from where elements come from. (Defaults to current page)
+		 *   flexField; Name of TemplaVoila FlexForm field to render.
+		 *
+		 * @param	string		$content: Typoscript content.
+		 * @param	array		$conf: Typoscript config array.
+		 * @return	string		comma seperated list of tt_content uids
+		 */
+		function getTVUids($content, $conf) {
+			$pageUid = intval($this->cObj->stdWrap($conf['pageUid'], $conf['pageUid.']));
+			$flexField = htmlspecialchars($this->cObj->stdWrap($conf['flexField'], $conf['flexField.']));
+			$page = ($pageUid == $GLOBALS['TSFE']->id || $pageUid == 0) ? $GLOBALS['TSFE']->page : $this->pi_getRecord('pages', $pageUid);
+			$content = $this->pi_getFFvalue(t3lib_div::xml2array($page['tx_templavoila_flex']), $flexField);
+			return $content;
+		}
+
+		/**
+		 * Returns tt_content elements used on TemplaVoila page.
+		 *
+		 * Allowed $conf parameters:
+		 *   pageUid; Id of page from where elements come from. (Defaults to current page)
+		 *   flexField; Name of TemplaVoila FlexForm field to render.
+		 *
+		 * @param	string		$content: Typoscript content.
+		 * @param	array		$conf: Typoscript config array.
+		 * @return	string		tt_content elements
+		 */
+		function getTVContent($content, $conf) {
+			$uids = explode(',', $this->getTVUids($content, $conf));
+
+			$GLOBALS['TSFE']->register['containerWidth'] = 900;
+			$GLOBALS['TSFE']->register['maxImageWidth'] = 900;
+			$GLOBALS['TSFE']->register['originalContainerWidth']['data']=900;
+			$GLOBALS['TSFE']->register['nestingLevel'] =0 ;
+			
+			foreach ($uids as $uid) {
+				$content .= $this->cObj->RECORDS(array('source' => $uid, 'tables' => 'tt_content') );
+			}
+			return $content;
+		}
+	}
+
+
+
+	if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/pmktsvoila/pi1/class.tx_pmktsvoila_pi1.php']) {
+		include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/pmktsvoila/pi1/class.tx_pmktsvoila_pi1.php']);
+	}
+
+?>
+			

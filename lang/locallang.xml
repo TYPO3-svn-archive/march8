@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for Page Tempolates and FCEs in Busy Noggin Quicksite</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+
+			<label index="pages.autoHeadline.label">Page Title as Content Headline</label>
+			<label index="pages.autoHeadline.default">Default</label>
+			<label index="pages.autoHeadline.on">On</label>
+			<label index="pages.autoHeadline.off">Off</label>
+			<label index="pages.bleed.label">Bleed Feature Content</label>
+			<label index="pages.bleed.default">Default</label>
+			<label index="pages.bleed.on">Bleed</label>
+			<label index="pages.bleed.off">Do Not Bleed</label>
+			
+			<label index="pages.tabs.outerTop">Outer Superior</label>
+			<label index="pages.tabs.outerBottom">Outer Inferior</label>
+			<label index="pages.tabs.topFeature">Destacado Superior</label>
+			<label index="pages.tabs.bottomFeature">Destacado Inferior</label>
+			<label index="pages.tabs.main">Contenido Principal</label>
+			<label index="pages.tabs.column1">Columnaa 1</label>
+			<label index="pages.tabs.column2">Columnaa 2</label>
+		
+		
+		
+		<label index="pages.Columna.default">Por defecto</label>
+		<label index="pages.Columna.on">Mostrar contenido propio y contenido común</label>
+		<label index="pages.Columna.off">Mostrar contenido propio</label>
+		<label index="pages.Columna.Columna1">Columnaa 1</label>
+		<label index="pages.Columna.Columna2">Columnaa 2</label>
+		
+		
+		<label index="pages.visibilidad.default">Por defecto</label>
+		<label index="pages.visibilidad.on">Mostrar</label>
+		<label index="pages.visibilidad.off">Ocultar</label>
+
+			<label index="pages.visibilidad.mainHeader">¿Mostrar la cabecera del contenido principal?</label>
+			<label index="pages.visibilidad.mainFooter">¿Mostrar el pie del contenido principal?</label>
+
+			
+			
+			
+			
+			<label index="fce.ds.col1.title">1 Columna</label>
+			<label index="fce.ds.col2.title">2 Columnas</label>
+			<label index="fce.ds.col3.title">3 Columnas</label>
+			<label index="fce.ds.col4.title">4 Columnas</label>
+			<label index="fce.ds.col5.title">5 Columnas</label>
+			<label index="fce.ds.col6.title">6 Columnas</label>
+			<label index="fce.ds.col7.title">7 Columnas</label>
+			<label index="fce.ds.col8.title">8 Columnas</label>
+			<label index="fce.ds.col9.title">9 Columnas</label>
+			<label index="fce.ds.col10.title">10 Columnas</label>
+			<label index="fce.ds.col11.title">11 Columnas</label>
+			<label index="fce.ds.col12.title">12 Columnas</label>
+			<label index="fce.ds.accordion.title">Accordion</label>
+			<label index="fce.ds.tabs.title">Tabs</label>		
+			<label index="fce.ds.slider.title">Slider</label>		
+			<label index="fce.ds.kwicks.title">Kwicks</label>		
+										
+			<label index="fce.ds.html_wrapper.title">HTML Wrapper</label>
+			<label index="fce.distribution.label">Distribution</label>
+			<label index="fce.distribution.1212">Half Half</label>
+			<label index="fce.distribution.1323">Third / Two Third</label>
+			<label index="fce.distribution.2313">Two Third / Third</label>
+			<label index="fce.distribution.3414">Three Quarter / Quarter</label>
+			<label index="fce.distribution.1434">Quarter / Three Quarter</label>
+			<label index="fce.distribution.131313">Third Third Third</label>
+			<label index="fce.distribution.121414">Half Quarter Quarter</label>
+			<label index="fce.distribution.141214">Quarter Half Quarter</label>
+			<label index="fce.distribution.141412">Quarter Quarter Half</label>
+			<label index="fce.bottomRule.label">Bottom Rule</label>
+			<label index="fce.col1.header">1 Columna</label>
+			<label index="fce.col2.header">2 Columnas</label>
+			<label index="fce.col3.header">3 Columnas</label>
+			<label index="fce.col4.header">4 Columnas</label>
+			<label index="fce.col5.header">5 Columnas</label>
+			<label index="fce.col6.header">6 Columnas</label>
+			<label index="fce.col7.header">7 Columnas</label>
+			<label index="fce.col8.header">8 Columnas</label>
+			<label index="fce.col9.header">9 Columnas</label>
+			<label index="fce.col10.header">10 Columnas</label>
+			<label index="fce.col11.header">11 Columnas</label>
+			<label index="fce.col12.header">12 Columnas</label>
+			<label index="fce.accordion.header">Accordion</label>
+			<label index="fce.tabs.header">Tabs</label>
+			<label index="fce.slider.header">Slider</label>
+			<label index="fce.kwicks.header">Kwicks</label>
+			
+			
+			
+
+			<label index="fce.col1.title">Columna 1: Title</label>
+			<label index="fce.col1.showTitle.label">Columna 1: Show Title</label>
+			<label index="fce.col1.bleed">Columna 1: Bleed (edge to edge)</label>
+			<label index="fce.col1.colStyle">Columna 1: Columna Style (no frame)</label>
+
+			<label index="fce.col2.title">Columna 2: Title</label>
+			<label index="fce.col2.showTitle.label">Columna 2: Show Title</label>
+			<label index="fce.col2.bleed">Columna 2: Bleed (edge to edge)</label>
+			<label index="fce.col2.colStyle">Columna 2: Columna Style (no frame)</label>
+
+			<label index="fce.col3.title">Columna 3: Title</label>
+			<label index="fce.col3.showTitle.label">Columna 3: Show Title</label>
+			<label index="fce.col3.bleed">Columna 3: Bleed (edge to edge)</label>
+			<label index="fce.col3.colStyle">Columna 3: Columna Style (no frame)</label>
+
+			<label index="fce.col4.title">Columna 4: Title</label>
+			<label index="fce.col4.showTitle.label">Columna 4: Show Title</label>
+			<label index="fce.col4.bleed">Columna 4: Bleed (edge to edge)</label>
+			<label index="fce.col4.colStyle">Columna 4: Columna Style (no frame)</label>
+			
+			
+			<label index="fce.col5.title">Columna 5: Title</label>
+			<label index="fce.col5.showTitle.label">Columna 5: Show Title</label>
+			<label index="fce.col5.bleed">Columna 5: Bleed (edge to edge)</label>
+			<label index="fce.col5.colStyle">Columna 5: Columna Style (no frame)</label>
+			
+			
+						
+			<label index="fce.col6.title">Columna 6: Title</label>
+			<label index="fce.col6.showTitle.label">Columna 6: Show Title</label>
+			<label index="fce.col6.bleed">Columna 6: Bleed (edge to edge)</label>
+			<label index="fce.col6.colStyle">Columna 6: Columna Style (no frame)</label>
+
+
+
+			<label index="fce.col7.title">Columna 7: Title</label>
+			<label index="fce.col7.showTitle.label">Columna 7: Show Title</label>
+			<label index="fce.col7.bleed">Columna 7: Bleed (edge to edge)</label>
+			<label index="fce.col7.colStyle">Columna 7: Columna Style (no frame)</label>
+			
+			
+			
+			<label index="fce.col8.title">Columna 8: Title</label>
+			<label index="fce.col8.showTitle.label">Columna 8: Show Title</label>
+			<label index="fce.col8.bleed">Columna 8: Bleed (edge to edge)</label>
+			<label index="fce.col8.colStyle">Columna 8: Columna Style (no frame)</label>
+
+			<label index="fce.col9.title">Columna 9: Title</label>
+			<label index="fce.col9.showTitle.label">Columna 9: Show Title</label>
+			<label index="fce.col9.bleed">Columna 9: Bleed (edge to edge)</label>
+			<label index="fce.col9.colStyle">Columna 9: Columna Style (no frame)</label>
+
+			<label index="fce.col10.title">Columna 10: Title</label>
+			<label index="fce.col10.showTitle.label">Columna 10: Show Title</label>
+			<label index="fce.col10.bleed">Columna 10: Bleed (edge to edge)</label>
+			<label index="fce.col10.colStyle">Columna 10: Columna Style (no frame)</label>
+			
+			
+			<label index="fce.col11.title">Columna 11: Title</label>
+			<label index="fce.col11.showTitle.label">Columna 11: Show Title</label>
+			<label index="fce.col11.bleed">Columna 11: Bleed (edge to edge)</label>
+			<label index="fce.col11.colStyle">Columna 11: Columna Style (no frame)</label>
+			
+			<label index="fce.col12.title">Columna 12: Title</label>
+			<label index="fce.col12.showTitle.label">Columna 12: Show Title</label>
+			<label index="fce.col12.bleed">Columna 12: Bleed (edge to edge)</label>
+			<label index="fce.col12.colStyle">Columna 12: Columna Style (no frame)</label>
+			<label index="fce.html_wrapper.header">Special HTML Wrapper</label>
+			<label index="fce.prehtml.label">Pre HTML</label>
+			<label index="fce.posthtml.label">Post HTML</label>
+			<label index="fce.selector.default">Default</label>
+			<label index="fce.selector.on">On</label>
+			<label index="fce.selector.off">Off</label>
+			<label index="fce.selector.bleedDefault">Default</label>
+			<label index="fce.selector.bleedOn">Bleed</label>
+			<label index="fce.selector.bleedOff">Do Not Bleed</label>
+			
+			
+			
+			
+			
+			<label index="fce.height">Height:</label>
+
+			<label index="fce.selected.none">Ninguna</label>
+			<label index="fce.collapsible">Colapsable:</label>
+			<label index="fce.effect">Efecto:</label>
+			<label index="fce.effect.none">none</label>
+			<label index="fce.effect.fade">Fade</label>
+			<label index="fce.effect.slide">Slide</label>
+			<label index="fce.duration">Duracion del efecto:</label>
+			<label index="fce.duration.slow">slow</label>
+			<label index="fce.duration.normal">normal</label>
+			<label index="fce.duration.fast">fast</label>
+			<label index="fce.event">Evento:</label>
+			<label index="fce.event.click">Click</label>
+			<label index="fce.event.mouseover">Roll over</label>
+			<label index="fce.cookie">Salvar en cookie:</label>
+			<label index="fce.tabs">Tab pagecontent:</label>	
+			<label index="fce.accordion">Accordion pagecontent:</label>						
+	
+		</languageKey>
+
+	</data>
+</T3locallang>

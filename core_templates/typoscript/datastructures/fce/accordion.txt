@@ -1,0 +1,131 @@
+
+
+page.jsInline {
+	8427 = TEXT
+	8427.data = register: accordion_javascript
+	8427.wrap = jQuery(document).ready(function(){ | });
+	8427.required = 1
+}
+
+accordionMod >
+accordionMod = COA
+accordionMod {
+	stdWrap.dataWrap = <div id="accordion_uid_{register: tx_templavoila_pi1.parentRec.uid}" class="accordion"{register: accordion_height}> | </div>
+	stdWrap.required = 1
+
+	10 = LOAD_REGISTER
+	10 {
+		accordion_id = accordion_uid_{register: tx_templavoila_pi1.parentRec.uid}
+		accordion_id.insertData = 1
+
+		accordion_height.field = field_height
+		accordion_height.noTrimWrap = | style="height: |px;"|
+		accordion_height.fieldRequired = field_height
+
+		accordion_selected.field = field_selected
+		accordion_collapsible.field = field_collapsible
+		accordion_effect.field = field_effect
+		accordion_duration.field = field_duration
+		accordion_event.field = field_event
+		accordion_cookie.field = field_cookie
+
+		# Save JavaScript to append multiple settings.
+		accordion_javascript_temp.data = register: accordion_javascript
+		accordion_javascript.cObject = COA
+		accordion_javascript.cObject {
+			10 = TEXT
+			10.data = register: accordion_javascript_temp
+
+			20 = COA
+			20 {
+				10 = TEXT
+				10.value (
+					// Remove URL and show only the anchor. jQuery Tabs don't like full path of RealURL.
+					jQuery('.accordion span a[href*=#c]').each(function(index, element){
+						jQuery(element).attr('href', '#' + jQuery(element).attr('href').split('#')[1]);
+					});
+				)
+
+				20 = COA
+				20 {
+					stdWrap.outerWrap.cObject = COA
+					stdWrap.outerWrap.cObject {
+						10 = TEXT
+						10.data = register: accordion_id
+						10.wrap = jQuery('# | ')
+
+						20 = TEXT
+						20.value = .each(function(index, element){ jQuery(element).accordion({ | }); });
+					}
+
+					10 = TEXT
+					10.if.isTrue.data = register: accordion_collapsible
+					10.value = collapsible: true,
+
+					20 = COA
+					20 {
+						if.isTrue.data = register: accordion_effect
+						wrap = fx: { | },
+
+						10 = TEXT
+						10.data = register: accordion_effect
+						10.wrap = | : 'toggle',
+
+						20 = TEXT
+						20.data = register: accordion_duration
+						20.wrap = duration: ' | '
+					}
+
+					30 = TEXT
+					30.if.value = click
+					30.if.equals.data = register: accordion_event
+					30.if.negate = 1
+					30.data = register: accordion_event
+					30.wrap = event: ' | ',
+
+					40 = TEXT
+					40.if.isTrue.data = register: accordion_cookie
+					40.value = cookie: { expires: 30 },
+
+					50 = TEXT
+					50.if.isTrue.data = register: accordion_selected
+					50.value = selected: {register: accordion_selected},
+					50.insertData = 1
+
+					# Set this option to be the last option with no comma.
+					60 = TEXT
+					60.value = 'null': null
+				}
+			}
+		}
+	}
+	
+20 = RECORDS
+	20 {
+		stdWrap.wrap =  | 
+		stdWrap.required = 1
+		source.current = 1
+		tables = tt_content
+
+		conf.tt_content = COA
+		conf.tt_content {
+		
+			10 = TEXT
+			10 {
+				outerWrap = <span> | </span>
+				field = subheader // header
+				htmlSpecialChars = 1
+				typolink.parameter.dataWrap = #c{field:uid}
+				stdWrap.HTMLparser = 1
+				stdWrap.HTMLparser.keepNonMatchedTags = 1
+				stdWrap.HTMLparser.tags.a.fixAttrib.href.prefixLocalAnchors = 0
+			}
+			
+			20 < tt_content
+	}
+
+
+	30 >
+
+}
+}
